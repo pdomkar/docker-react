@@ -1,0 +1,10 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t pdomkar/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true pdomkar/docker-react npm run test
